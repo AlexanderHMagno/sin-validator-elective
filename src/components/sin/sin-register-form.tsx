@@ -15,6 +15,9 @@ const SinRegisterForm = () => {
     setSin(event.target.value);
   };
 
+  //clean the digits from this
+  const handleInputCleanUp = () => setSin('');
+
   return (
     <Card className="w-full max-w-lg p-8 bg-white rounded-lg shadow-md">
       <h3 className="text-2xl font-semibold mb-6 text-center">
@@ -27,6 +30,7 @@ const SinRegisterForm = () => {
           required
           value={sin}
           onChange={handleInputChange}
+          onClear={handleInputCleanUp}
           color="primary"
           isClearable
           fullWidth
@@ -34,6 +38,9 @@ const SinRegisterForm = () => {
           errorMessage={useForm?.errors.sin?.join('')}
           name="sin"
         />
+        <div className="text-green-500 mt-2">
+          {useForm?.success && <h1>This is a valid SIN</h1>}
+        </div>
         <Button className="mt-4" type="submit" color="primary">
           Validate
         </Button>
