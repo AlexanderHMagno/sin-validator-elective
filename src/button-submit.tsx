@@ -8,9 +8,8 @@ interface ButtonInterface {
 export default function ButtonSubmit({ children }: ButtonInterface) {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" isLoading={pending}>
+    <Button type="submit" isLoading={pending} color="primary">
       {children}
     </Button>
   );
 }
-
