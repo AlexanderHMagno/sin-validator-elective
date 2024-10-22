@@ -1,39 +1,44 @@
 import React from 'react';
-import { Navbar, NavbarBrand, NavbarContent, Tooltip } from '@nextui-org/react';
+import {
+  Button,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  Tooltip,
+} from '@nextui-org/react';
 
 import Link from 'next/link';
 import Image from 'next/image';
 import Portfolio from '@/components/Portfolio';
+import ApiDropDown from '@/components/header/apidropdown';
 
 export default async function Header() {
   return (
     <Navbar className=" bg-gradient-to-r from-sky-500 to-indigo-500">
       <NavbarBrand>
-        <Link
-          href={'/'}
-          className="font-bold text-inherit flex flex-col justify-end"
+        <Tooltip
+          content={
+            'This code test is independent and has no affiliation with Elective.'
+          }
         >
-          <Image
-            src={'/Elective-Logo.png'}
-            alt="Elective Logo"
-            width={100}
-            height={100}
-          />
-          <span className="text-xs text-white">Testing site</span>
-        </Link>
+          <Link
+            href={'https://elective.recruitee.com/o/software-engineer'}
+            target="_blank"
+            className="font-bold text-inherit flex flex-col justify-end"
+          >
+            <Image
+              src={'/Elective-Logo.png'}
+              alt="Elective Logo"
+              width={100}
+              height={100}
+            />
+          </Link>
+        </Tooltip>
       </NavbarBrand>
 
       <NavbarContent className="justify-end fw-full" justify="end">
-        <Tooltip content={'Request data to this endpoint to validate your SIN'}>
-          <Link
-            className="text-white font-bold text-sm text-nowrap"
-            href={'/api/validate/046454286'}
-            target="_blank"
-          >
-            Next Api
-          </Link>
-        </Tooltip>
-        <Tooltip content={'Check the Repo'}>
+        <ApiDropDown />
+        <Button variant="light">
           <Link
             className="text-white font-bold text-sm"
             href={'https://github.com/AlexanderHMagno/sin-validator-elective'}
@@ -41,7 +46,8 @@ export default async function Header() {
           >
             Documentation
           </Link>
-        </Tooltip>
+        </Button>
+
         <div className="flex flex-wrap ">
           <Portfolio />
         </div>
