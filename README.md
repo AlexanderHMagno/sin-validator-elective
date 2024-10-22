@@ -4,6 +4,8 @@
 
 The SIN Validator is a web application designed to validate Canadian Social Insurance Numbers (SINs). It utilizes the Luhn algorithm to ensure that the provided SIN is valid and consists of exactly 9 digits, ignoring any spaces. The application is built with Next.js (TypeScript), NextUI for UI components (Tailwind), and Zod for validation.
 
+![Application Dashboard](./public/dashboard.png)
+
 ## Features
 
 - Validate SINs with a user-friendly interface.
@@ -32,7 +34,7 @@ npm install -g pnpm
 - pnpm dev
 - This project will Run On [http://localhost:3000/](http://localhost:3000/)
 
-### Tests
+## Tests
 
 This program comes with a test validator using JEST for the SIN algorithm.
 
@@ -40,4 +42,40 @@ To run the tests, use the following command:
 
 ```bash
 pnpm test
+```
+
+## API
+
+- **URL**: `/api/validate/{SIN}`
+- **Method**: `GET`
+
+### Description
+
+This endpoint validates the provided Social Insurance Number (SIN) and returns a JSON object indicating whether the SIN is valid or not.
+
+### Response
+
+The response will be a JSON object with the following structure:
+
+```json
+{
+  "isValid": boolean,
+  "errors": string[]
+}
+```
+
+### Example
+
+To validate a SIN, you can make a request to the following URL:
+
+```bash
+/api/validate/046454286
+```
+
+Sample Response:
+
+```json
+{
+  "isValid": true
+}
 ```

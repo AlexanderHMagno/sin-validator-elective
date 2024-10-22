@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, NavbarBrand, NavbarContent } from '@nextui-org/react';
+import { Navbar, NavbarBrand, NavbarContent, Tooltip } from '@nextui-org/react';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,9 +22,27 @@ export default async function Header() {
           <span className="text-xs text-white">Testing site</span>
         </Link>
       </NavbarBrand>
-      <NavbarContent className="w-1/4 gap-4" justify="center"></NavbarContent>
-      <NavbarContent className="justify-end" justify="end">
-        <div className="flex flex-wrap gap-4">
+
+      <NavbarContent className="justify-end fw-full" justify="end">
+        <Tooltip content={'Request data to this endpoint to validate your SIN'}>
+          <Link
+            className="text-white font-bold"
+            href={'/api/validate/046454286'}
+            target="_blank"
+          >
+            Next Api
+          </Link>
+        </Tooltip>
+        <Tooltip content={'Check the Repo'}>
+          <Link
+            className="text-white font-bold"
+            href={'https://github.com/AlexanderHMagno/sin-validator-elective'}
+            target="_blank"
+          >
+            Documentation
+          </Link>
+        </Tooltip>
+        <div className="flex flex-wrap ">
           <Portfolio />
         </div>
       </NavbarContent>
