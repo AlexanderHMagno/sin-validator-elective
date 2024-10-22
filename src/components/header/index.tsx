@@ -26,7 +26,7 @@ export default async function Header() {
       <NavbarContent className="justify-end fw-full" justify="end">
         <Tooltip content={'Request data to this endpoint to validate your SIN'}>
           <Link
-            className="text-white font-bold"
+            className="text-white font-bold text-sm text-nowrap"
             href={'/api/validate/046454286'}
             target="_blank"
           >
@@ -35,7 +35,7 @@ export default async function Header() {
         </Tooltip>
         <Tooltip content={'Check the Repo'}>
           <Link
-            className="text-white font-bold"
+            className="text-white font-bold text-sm"
             href={'https://github.com/AlexanderHMagno/sin-validator-elective'}
             target="_blank"
           >
