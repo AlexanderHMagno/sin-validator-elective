@@ -6,6 +6,15 @@ The SIN Validator is a web application designed to validate Canadian Social Insu
 
 ![Application Dashboard](./public/dashboard.png)
 
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Testing](#test)
+- [API Endpoint(next)](#api)
+
+
+
 ## Features
 
 - Validate SINs with a user-friendly interface.
@@ -34,7 +43,7 @@ npm install -g pnpm
 - pnpm dev
 - This project will Run On [http://localhost:3000/](http://localhost:3000/)
 
-## Tests
+## Test
 
 This program comes with a test validator using JEST for the SIN algorithm.
 
