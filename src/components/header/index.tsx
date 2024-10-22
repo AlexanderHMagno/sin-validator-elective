@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navbar, NavbarBrand, NavbarContent } from '@nextui-org/react';
-import Elective from '../../../public/Elective-Logo.png';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -14,7 +13,12 @@ export default async function Header() {
           href={'/'}
           className="font-bold text-inherit flex flex-col justify-end"
         >
-          <Image src={Elective} alt="Elective Logo" width={100} height={100} />
+          <Image
+            src={'/Elective-Logo.png'}
+            alt="Elective Logo"
+            width={100}
+            height={100}
+          />
           <span className="text-xs text-white">Testing site</span>
         </Link>
       </NavbarBrand>
