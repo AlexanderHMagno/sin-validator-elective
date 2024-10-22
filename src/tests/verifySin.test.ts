@@ -1,4 +1,6 @@
-import { verifySin, errorMessages } from '../actions/verify-sin';
+import SinValidator from '../common/validator';
+import { verifySin } from '../actions/verify-sin';
+
 import { fakeValidSins } from './sinFakeNumbers';
 
 describe('verifySin', () => {
@@ -8,7 +10,9 @@ describe('verifySin', () => {
 
     const result = await verifySin({ errors: {} }, formData);
 
-    expect(result.errors.sin).toContain(errorMessages.incompleteDigits);
+    expect(result.errors.sin).toContain(
+      SinValidator.errorMessages.incompleteDigits
+    );
   });
 
   it('should return an error if the SIN contains non-numeric characters', async () => {
@@ -17,7 +21,9 @@ describe('verifySin', () => {
 
     const result = await verifySin({ errors: {} }, formData);
 
-    expect(result.errors.sin).toContain(errorMessages.lettersIncluded);
+    expect(result.errors.sin).toContain(
+      SinValidator.errorMessages.lettersIncluded
+    );
   });
 
   it('should return an error if the SIN does not pass the Luhn algorithm', async () => {
@@ -26,7 +32,9 @@ describe('verifySin', () => {
 
     const result = await verifySin({ errors: {} }, formData);
 
-    expect(result.errors.sin).toContain(errorMessages.luhnTestIncorrect);
+    expect(result.errors.sin).toContain(
+      SinValidator.errorMessages.luhnTestIncorrect
+    );
   });
 
   it('should return success if the SIN is valid', async () => {
