@@ -1,8 +1,9 @@
 'use client';
 import React, { useState, ChangeEvent } from 'react';
-import { Card, Input, Button } from '@nextui-org/react';
+import { Card, Input } from '@nextui-org/react';
 // import { useFormState, useFormState } from 'react-dom';
 import * as actions from '@/actions';
+import ButtonSubmit from '@/button-submit';
 
 const SinRegisterForm = () => {
   const [sin, setSin] = useState('');
@@ -25,7 +26,6 @@ const SinRegisterForm = () => {
       </h3>
       <form action={action} className="flex flex-col gap-4">
         <Input
-          type=""
           placeholder="Enter your SIN"
           required
           value={sin}
@@ -41,9 +41,7 @@ const SinRegisterForm = () => {
         <div className="text-green-500 mt-2">
           {useForm?.success && <h1>This is a valid SIN</h1>}
         </div>
-        <Button className="mt-4" type="submit" color="primary">
-          Validate
-        </Button>
+        <ButtonSubmit>Validate SIN</ButtonSubmit>
       </form>
     </Card>
   );
