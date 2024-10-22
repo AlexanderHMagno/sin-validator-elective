@@ -31,3 +31,13 @@ npm install -g pnpm
 - pnpm install
 - pnpm dev
 - This project will Run On [http://localhost:3000/](http://localhost:3000/)
+
+### Tests
+
+This program comes with a test validator using JEST for the SIN algorithm.
+
+To run the tests, use the following command:
+
+```bash
+pnpm test
+```
