@@ -10,13 +10,24 @@ interface verifySinProps {
   };
 }
 
+export const errorMessages: { [key: string]: string } = {
+  incompleteDigits:
+    'Well Well, it looks like your SIN doesnt have 9 digits, try again',
+  lettersIncluded:
+    'Well Well, have you seen a SIN with letters?, Please add a Valid Sin',
+  luhnTestIncorrect: 'Mr Hans Peter Luhn, says this is not a valid SIN',
+};
+
 const sinSchema = z.object({
   sin: z
     .string()
     .transform((input) => input.replace(/\s+/g, '')) // Remove spaces
+    .refine((sanitized) => !/[a-zA-Z]/.test(sanitized), {
+      //non-numeric characters
+      message: errorMessages.lettersIncluded,
+    })
     .refine((sanitized) => /^\d{9}$/.test(sanitized), {
-      message:
-        'Well Well, it looks like your SIN doesnt have 9 digits, try again',
+      message: errorMessages.incompleteDigits,
     }),
 });
 
@@ -38,9 +49,7 @@ export async function verifySin(
   if (isNonNumber) {
     return {
       errors: {
-        sin: [
-          'well well, have you seen a SIN with letters?, Please add a Valid Sin',
-        ],
+        sin: [errorMessages.lettersIncluded],
       },
     };
   }
@@ -51,7 +60,7 @@ export async function verifySin(
   if (!isLuhnAlgorithm) {
     return {
       errors: {
-        sin: ['Mr Hans Peter Luhn, says this is not a valid SIN'],
+        sin: [errorMessages.luhnTestIncorrect],
       },
     };
   }
@@ -73,7 +82,7 @@ const luhnAlgorithm = (sin: string): boolean => {
     const digit = Number(sin[index]);
     if (index % 2) {
       const double = digit * 2;
-      if (double > 10) sum += 1 + (double % 10);
+      if (double >= 10) sum += 1 + (double % 10);
       else sum += double;
     } else {
       sum += digit;
