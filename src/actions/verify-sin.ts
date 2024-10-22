@@ -13,10 +13,11 @@ interface verifySinProps {
 const sinSchema = z.object({
   sin: z
     .string()
-    .regex(
-      /^\d{9}$/,
-      'Well Well it looks like your SIN doesnt have 9 digits, try again'
-    ),
+    .transform((input) => input.replace(/\s+/g, '')) // Remove spaces
+    .refine((sanitized) => /^\d{9}$/.test(sanitized), {
+      message:
+        'Well Well, it looks like your SIN doesnt have 9 digits, try again',
+    }),
 });
 
 export async function verifySin(
