@@ -4,7 +4,7 @@ export default class SinValidator {
     incompleteDigits:
       "Well Well, it looks like your SIN doesn't have 9 digits, try again",
     lettersIncluded:
-      'Well Well, have you seen a SIN with letters?, Please add a Valid Sin',
+      'Well Well, have you seen a SIN with letters?, Please add a Valid SIN',
     luhnTestIncorrect: 'Mr Hans Peter Luhn says this is not a valid SIN',
   };
 
