@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import SinValidator from '@/common/validator';
 
-type SinProps = {
-  params: { sin: string };
-};
+interface SinProps {
+  params: Promise<{ sin: string }>;
+}
 export async function GET(req: Request, { params }: SinProps) {
   //Just Awaiting cause next 15 requires to async these params
   const { sin } = await params;
